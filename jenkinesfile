@@ -31,7 +31,7 @@ pipeline {
             script {
                 echo "Deploying the app"
                 echo "Deploying to env: ${params.ENV}"
-                echo "Deploying to env: ${params.APPVERSION}"
+                
             }
     }
     }
