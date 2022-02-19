@@ -1,0 +1,23 @@
+pipeline {
+    agent any
+
+    stages {
+        
+        stage('Build') {
+            steps {
+                script {
+                    echo "Bulding the code"
+                }
+            }
+        }
+        
+        stage("compile") {
+            steps {
+                script {
+                    echo "Compiling the code"
+                }
+            }
+        }
+        
+    }
+}
