@@ -1,6 +1,10 @@
 pipeline {
     agent any
-
+    parameters{
+        string(name:'ENV',defaultvalue:'Test',description 'version to deploy')
+        boolenParam(name:'ExecuteTests',defaultvalue:true,description 'decide the run to tc')
+        choice(name:'APPVERSION',choices:['1.1','1.2','1.3'])
+    }
     stages {
         stage('Build') {
             steps {
@@ -9,14 +13,27 @@ pipeline {
                }
                }
             }
-            stage('Compile')
+            stage('Test')
+            {
+                when{
+                    expression{
+                        params.ExecuteTests == true
+                    }
+                }
+            steps {
+                script{
+                    echo"Teesting the code"
+                }
+            }
+           stage('Deploy')
             {
             steps {
                 script{
-                    echo"Compiling the code"
+                    echo"Deploying the code"
+                    echo "Deploying to env : ${params.ENV}"
+                    
                 }
             }
-        
         }
     }
 }
