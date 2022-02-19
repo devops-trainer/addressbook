@@ -1,10 +1,5 @@
 pipeline {
     agent any
-    tools{
-        jdk 'myjava'
-        maven 'mymaven'
-        git 'Default'
-    }
     stages {
         stage('COMPILE') {
             steps {
