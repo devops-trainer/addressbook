@@ -10,11 +10,10 @@ pipeline {
             steps {
                script{
                     echo "Buliding the code"
-               }
-               }
+                }
             }
-            stage('Test')
-            {
+        }
+        stage('Test'){
                 when{
                     expression{
                         params.ExecuteTests == true
@@ -25,13 +24,11 @@ pipeline {
                     echo"Teesting the code"
                 }
             }
-           stage('Deploy')
-            {
+        stage('Deploy'){
             steps {
                 script{
                     echo"Deploying the code"
-                    echo "Deploying to env : ${params.ENV}"
-                    
+                    echo "Deploying to env: ${params.ENV}"                   
                 }
             }
         }
