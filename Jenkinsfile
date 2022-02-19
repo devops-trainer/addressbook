@@ -28,8 +28,9 @@ pipeline {
         stage('Deploy'){
             steps {
                 script{
-                    echo"Deploying the code"
-                    echo "Deploying to env: ${params.ENV}"                   
+                    echo"Deploying the app"
+                    echo "Deploying the app to ENV: ${params.ENV}"      
+                    echo "Deploying the app version: ${params.APPVERSION}"             
                 }
             }
         }
