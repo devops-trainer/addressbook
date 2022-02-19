@@ -2,7 +2,7 @@ pipeline {
     agent any
     parameters{
         string(name:'ENV',defaultValue:'Test',description:'version to deploy')
-        boolenParam(name:'ExecuteTests',defaultValue:true,description:'decide the run to tc')
+        booleanParam(name:'ExecuteTests',defaultValue:true,description:'decide the run to tc')
         choice(name:'APPVERSION',choices:['1.1','1.2','1.3'])
     }
     stages {
@@ -21,7 +21,7 @@ pipeline {
                 }
             steps {
                 script{
-                    echo"Teesting the code"
+                    echo"Testing the code"
                 }
             }
         }
