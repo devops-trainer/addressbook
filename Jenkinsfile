@@ -5,7 +5,7 @@ pipeline {
             steps {
                script{
                     echo "COMPILING THE CODE"
-                    git 'https://github.com/Sasi0903/addressbook-1.git'
+                    git  clone 'https://github.com/Sasi0903/addressbook-1.git'
                     sh 'mvn compile'
                 }
             }
