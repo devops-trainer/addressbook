@@ -26,8 +26,12 @@ pipeline {
         stage('PACKAGE'){
             steps{
                 script{
-                    echo "PACKAGING THE CODE"
-                    sh 'mvn package'
+                    sshagent(['Test_Server-key']){
+                        echo "PACKAGING THE CODE"
+                        sh "scp -o StrictHostkeyChecking=no ServerScrpit.sh ec2-user@172.31.36.19:/home/ec2-user"
+                        sh "ssh -o StrictHostkeyChecking=no ec2-user@172.31.36.19 'bash ~/serverScrpit.sh'"
+                    }
+                    
                 }
             }
         }
