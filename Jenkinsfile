@@ -30,11 +30,9 @@ pipeline {
                         echo "PACKAGING THE CODE"
                         sh "scp -o StrictHostkeyChecking=no ServerScrpit.sh ec2-user@172.31.36.19:/home/ec2-user"
                         sh "ssh -o StrictHostkeyChecking=no ec2-user@172.31.36.19 'bash ~/ServerScrpit.sh'"
-                    }
-                    
+                    }                   
                 }
             }
-        }
-        
+        }        
     }
 }
