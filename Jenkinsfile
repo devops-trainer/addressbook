@@ -39,19 +39,16 @@ pipeline {
                 }
             }
         }
-
         stage('Deploy the docker image'){
-        agent any{
             steps{
                 script{
                     sshagent(['Test_Server-key']){
                         withCredentials([usernamePassword(credentialsId: 'HubID', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
-                        sh "ssh ec2-user@172.31.36.19 sudo docker run -itd -P saikiranreddy1808/java-mvn-privaterepo:$BUILD_NUMBER"
+                        sh "ssh ec2-user@172.31.36.19 sudo docker run -itd -P saikiranreddy1808/java-mvn-privaterepo:$BUILD_NUMBER"                
+                        }
                     }
-                }
                 }
             }
         }
-        }      
-    } 
+    }      
 }
