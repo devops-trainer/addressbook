@@ -38,7 +38,7 @@ pipeline {
                     }               
                 }
             }
-        }  ]
+        }
 
         stage('Deploy the docker image'){
         agent any{
