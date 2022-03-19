@@ -31,8 +31,8 @@ pipeline {
         }
         stage('PACKAGE'){     
             agent any       
-            steps{
-                script{
+            steps {
+                script {
                     sshagent(['Test_server-Key']) {
                         echo "PACKAGING THE CODE"
                         sh "scp -o StrictHostKeyChecking=no server-script.sh ec2-user@172.31.14.250:/home/ec2-user"
