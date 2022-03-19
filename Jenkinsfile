@@ -1,11 +1,12 @@
 pipeline {
-    agent any
+    agent none
     tools{
         jdk 'myJava'
         maven 'myMaven'
     }
     stages {
         stage('COMPILE') {
+            agent any
             steps {
                script {
                    echo "COMPILING THE CODE"
@@ -15,6 +16,7 @@ pipeline {
             }
         }
         stage('UNITTEST') {
+            agent 'linux_slave'
             steps {
                script {
                    echo "RUNNING THE UNIT TEST CASES"
@@ -27,7 +29,8 @@ pipeline {
                 }
             }
         }
-        stage('PACKAGE'){            
+        stage('PACKAGE'){     
+            agent any       
             steps{
                 script{
                     echo "PACKAGING THE CODE"
