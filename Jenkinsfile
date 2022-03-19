@@ -1,60 +1,32 @@
 pipeline {
     agent any
-    parameters {
-        string(name: 'ENV', defaultValue: 'Test', description: 'version to deploy')
-        booleanParam(name: 'ExecuteTests', defaultValue: true, description: 'decide to run tc')
-        choice(name: 'APPVERSION', choices: ['1.1', '1.2', '1.3'])
-    }
-    environment{
-        NEW_VERSION = '2.1'
+    tools{
+        jdk 'myjava'
+        maven 'mymaven'
     }
     stages {
-        stage('Build') {
+        stage('COMPILE') {
             steps {
                script {
-                   echo "Building the code"
-                   echo "Building version ${NEW_VERSION}"
+                   echo "COMPILING THE CODE"
+                   git 'https://github.com/vcvishalchand/addressbook.git'
+                   sh 'mvn compile'
                 }
             }
         }
-        stage('Test') {
-            when {
-                expression {
-                    params.ExecuteTests == true
-                }
-            }
+        stage('UNITTEST') {
             steps {
                script {
-                   echo "Testing the code"
+                   echo "RUNNING THE UNIT TEST CASES"
+                   sh 'mvn test'
                 }
             }
         }
-        stage('Package'){
-            input {
-                message "Select the version to package"
-                ok "Version selected"
-                parameters {
-                    choice(name: 'NEWAPP', choices: ['2.1', '2.2', '2.3']) 
-                }
-            }
+        stage('Package'){            
             steps{
                 script{
-                    echo "Packaging the code"
-                    echo "Packaging the version: ${NEWAPP}"
-                }
-            }
-        }
-        stage('Deploy'){
-            when{
-                expression{
-                    BRANCH_NAME=='dev'
-                }
-            }
-            steps {
-                script{
-                    echo "Deploying the app"
-                    echo "Deploying the app to env: ${params.ENV}"
-                    echo "Deploying the app version: ${params.APPVERSION}"
+                    echo "PACKAGING THE CODE"
+                    sh 'mvn package'
                 }
             }
         }
