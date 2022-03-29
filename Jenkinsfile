@@ -16,7 +16,8 @@ pipeline {
             }
         }
         stage('UNITTEST') {
-            agent {label 'linux_slave'}
+            //agent {label 'linux_slave'}
+            agent any
             steps {
                script {
                    echo "RUNNING THE UNIT TEST CASES"
