@@ -39,7 +39,7 @@ pipeline {
                             echo "PACKAGING THE CODE"
                             sh "scp -o StrictHostKeyChecking=no server-script.sh ec2-user@172.31.14.250:/home/ec2-user"
                             sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.14.250 'bash ~/server-script.sh'"
-                            sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.14.250 sudo docker build -t vishalchand/java-mvn-repos:$BUILD_NUMBER /home/ec2-user/addressbook"
+                            sh "ssh ec2-user@172.31.14.250 sudo docker build -t vishalchand/java-mvn-repos:$BUILD_NUMBER /home/ec2-user/addressbook"
                             sh "ssh ec2-user@172.31.14.250 sudo docker login -u $USERNAME -p $PASSWORD"
                             sh "ssh ec2-user@172.31.14.250 sudo docker push vishalchand/java-mvn-repos:$BUILD_NUMBER"
                         }
