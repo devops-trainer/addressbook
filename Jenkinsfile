@@ -48,7 +48,7 @@ pipeline {
             }
         }
 
-        stage('Deploy the docker image') {
+        stage('DEPLOYE ON DEPLOYE SERVER') {
             agent any
                 steps {
                     script {
