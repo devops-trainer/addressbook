@@ -48,7 +48,7 @@ pipeline {
             }
         }
 
-        stage('Deploy the docker image') {
+        /*stage('Deploy the docker image') {
             agent any
                 steps {
                     script {
@@ -59,7 +59,7 @@ pipeline {
                         }
                     }
                 }            
-        }
+        } */
 
     }
 }
