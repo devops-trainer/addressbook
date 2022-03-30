@@ -12,5 +12,5 @@ else
     fi
     cd /home/ec2-user/addressbook
 mvn package
-sudo yum docker install -y
+sudo yum install docker -y
 sudo systemctl start docker
