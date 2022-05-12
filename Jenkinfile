@@ -6,7 +6,7 @@ pipeline{
     }
     stages{
         stage("compile"){
-            agent any
+            agent {label 'linux_master'}
             steps{
                 script{
                     echo "COMPILE THE CODE"
