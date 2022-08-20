@@ -15,6 +15,7 @@ pipeline{
             }
         }
         stage("UNITTEST"){
+            //agent {label 'linux_slave'}
             agent any
             steps{
                 script{
