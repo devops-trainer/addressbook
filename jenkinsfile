@@ -11,6 +11,11 @@ pipeline {
             }
         }
          stage('unittest') {
+            when{
+                expression{
+                    params.executeTests == true
+                }
+            }
             steps {
                 echo 'run the test file'
             }
