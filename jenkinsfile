@@ -3,7 +3,7 @@ pipeline {
     parameters{
         string(name:'Env',defaultvalue:'test',description:'Env to deploy')
     }
-    stages 
+    stages {
         stage('compile') {
             steps {
                 echo 'compile the code'
@@ -20,4 +20,5 @@ pipeline {
             }
         }
     }
+}
 }
