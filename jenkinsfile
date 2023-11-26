@@ -2,6 +2,7 @@ pipeline {
     agent any
     parameters{
         string(name:'Env',defaultValue:'test',description:'Env to deploy')
+        booleanParam(name:'executeTests',defaultValue:true,description:'decide to run test cases')
     }
     stages {
         stage('compile') {
