@@ -29,7 +29,7 @@ parameters{
         }
         stage('Deploy') {
             input{
-                message: "Provide the approval for Prod"
+                message "Provide the approval for Prod"
                 ok "Deploy to prod"
                 parameters{
                     booleanParam(name:'DEPLOYTOPROD',defaultValue:false,description:'decide to deploy on prod')
