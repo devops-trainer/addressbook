@@ -11,7 +11,12 @@ parameters{
                 echo 'compile the code'
             }
         }
-    stage('test') {
+    stage('UnitTest') {
+        when{
+            expression{
+                params.executeTests == true
+            }
+        }
             steps {
                 echo 'run the test cases'
             }
