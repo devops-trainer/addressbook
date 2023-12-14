@@ -1,5 +1,4 @@
-FROM tomcat:8.5.72-jdk17-openjdk-buster
-MAINTAINER "DEVOPS1"
-COPY addressbook.war /usr/local/tomcat/webapps
-EXPOSE 8080
-CMD ["catalina.sh", "run"]
+from tomcat:8.5.72-jdk17-openjdk-buster
+add  addressbook.war /usr/local/tomcat/webapps
+expose 8080
+cmd ["catalina.sh", "run"]
