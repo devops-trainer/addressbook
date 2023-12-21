@@ -1,43 +1,23 @@
 pipeline {
-    agent none
-    tools{
-       // jdk 'myjava1'
-        maven 'mymaven1'
-    }
-
+    agent any
 
     stages {
-       
-        stage('compile') {
-            agent any
+        stage('Compile') {
             steps {
-                echo "compile the code"
-                sh 'mvn compile' 
+                echo 'Compile the code'
             }
         }
-    stage('UnitTest') {
-        agent any
-       
+        stage('UnitTest') {
             steps {
-                echo 'run the test cases'
-                sh 'mvn test'
-            }
-            post{
-                always{
-                    junit 'target/surefire-reports/*.xml'
-                }
+                echo 'Run the test cases'
             }
         }
-        stage('package') {
-            agent{label 'linux_slave'}
+        stage('Package ') {
             steps {
-                echo "package the code"
-                sh 'mvn package'
+                echo 'Package the code'
             }
         }
         
-            
-        }
+    }
 }
-
           
