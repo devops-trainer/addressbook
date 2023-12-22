@@ -7,6 +7,11 @@ pipeline {
    
 
     stages {
+        when{
+            expression{
+                BRANCH_NAME == 'devs'
+            }
+        }
         stage('Compile') {
             agent any
             steps {
