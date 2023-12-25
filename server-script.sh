@@ -8,7 +8,7 @@ cd /home/ec2-user/addressbook
 git pull origin master
 else
 echo "repois not there"
-git clone
+git clone https://github.com/mahakudmanoranjan/addressbook.git
 cd /home/ec2-user/addressbook
 fi
 mvn package
