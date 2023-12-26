@@ -28,10 +28,19 @@ pipeline {
             }
         }
         stage('Package ') {
-            agent {label 'linux_slaves'} 
+           // agent {label 'linux_slaves'} 
+           agent any
+           //ON Slaves2
             steps {
+                sshagent(['build-server-key']) {
+
                 echo "Package the code"
-                sh 'mvn package'
+               // sh 'mvn package'
+               sh "scp -o StrictHostKeyChecking=no server-script.sh ec2-user@172.31.36.92:/home/ec2-user"
+               sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.36.92 ~/server-script.sh"
+              // sh "ssh -o ec2-user@172.31.36.92 sudo docker build -t imagename /home/ec2-user/addressbook"
+
+               }
             }
         }
     }
