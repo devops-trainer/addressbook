@@ -2,7 +2,7 @@ pipeline {
     agent any
     parameters {
         string(name:'Env',defaultValue:'Test',description:'deployed to mentioned environment')
-        booleanparam(name:'executetest',defaultValue:true,description:'Test is executed')
+        booleanParam(name:'executetest',defaultValue:true,description:'Test is executed')
         choice(name:'Appversion',choices:['1.1','1.2','1.3'])
     }
     stages {
