@@ -5,12 +5,23 @@ pipeline {
         booleanParam(name:'executetest',defaultValue:true,description:'Test is executed')
         choice(name:'Appversion',choices:['1.1','1.2','1.3'])
     }
+    environment {
+        NEW_VERSION = '2.1'
+    }
     stages {
         stage('Build') {
+            input {
+                message "select the appversion"
+                ok "version selected"
+                parameters {
+                    choice(name:'appversion',choices['1.1','1.2','1.3'])
+                }
+            }
             steps {
               script {
                   echo "Building the code"
                   echo "deploying to environment: ${params.Env}"
+                  echo "our newversion is: ${NEW_VERSION}"
               }  
             }
         }
@@ -27,11 +38,7 @@ pipeline {
             }
         }
         stage('package') {
-            when {
-                expression {
-                    BRANCH_NAME == 'b1'
-                }
-            }
+            
             steps {
               script {
                   echo "Deploy the application"
