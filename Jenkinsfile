@@ -12,7 +12,7 @@ pipeline {
         stage('Build') {
             input {
                 message "select the appversion"
-                ok "version selected"
+                ok "selected"
                 parameters {
                     choice(name:'appversion',choices:['1.1','1.2','1.3'])
                 }
