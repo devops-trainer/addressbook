@@ -27,6 +27,11 @@ pipeline {
             }
         }
         stage('package') {
+            when {
+                expression {
+                    BRANCH_NAME == 'PROD'
+                }
+            }
             steps {
               script {
                   echo "Deploy the application"
