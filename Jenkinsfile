@@ -14,7 +14,7 @@ pipeline {
                 message "select the appversion"
                 ok "version selected"
                 parameters {
-                    choice(name:'appversion',choices['1.1','1.2','1.3'])
+                    choice(name:'appversion',choices:['1.1','1.2','1.3'])
                 }
             }
             steps {
