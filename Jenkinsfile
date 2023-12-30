@@ -29,7 +29,7 @@ pipeline {
         stage('package') {
             when {
                 expression {
-                    BRANCH_NAME == 'PROD'
+                    BRANCH_NAME == 'b1'
                 }
             }
             steps {
