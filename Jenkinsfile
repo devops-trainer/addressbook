@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent none
     tools {
         jdk 'Myjava'
         maven 'mymaven'
@@ -7,7 +7,7 @@ pipeline {
     
     stages {
         stage('Compile') {
-            
+            agent any
             steps {
               script {
                   echo "Building the code"
@@ -17,7 +17,7 @@ pipeline {
             }
         }
         stage('UnitTest') {
-            
+            agent any
             steps {
               script {
                   echo "Testing the code"
@@ -32,7 +32,7 @@ pipeline {
         }
         
         stage('package') {
-            
+            agent {label 'linux_slave'}
             steps {
               script {
                   echo "Deploy the application"
