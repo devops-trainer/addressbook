@@ -1,7 +1,7 @@
 sudo amazon-linux-extras install java-openjdk11 -y
 sudo yum install git -y
 sudo yum install maven -y
-if [ -d "addressbook"]
+if [ -d "addressbook" ]
 then
   echo "repo is cloned and exists"
   cd /home/ec2-user/addressbook
