@@ -43,7 +43,7 @@ pipeline {
             agent {label 'linux_slave'}
             steps {
               script {
-                  echo "Deploy the applications"
+                  echo "Deploying the applications"
                   sh 'mvn package'
                   
               }  
