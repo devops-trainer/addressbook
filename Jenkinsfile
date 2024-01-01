@@ -21,16 +21,17 @@ pipeline {
         }
         stage('UnitTest') {
             agent any
-            sshagent(['Test_Server']) {
+            
             steps {
               script {
+                sshagent(['Test_Server']) {
                   echo "Testing the code"
                   sh "scp -o StrictHostKeyChecking=no server-script.sh ${TEST_SERVER_IP}:/home/ec2-user"
                   sh "ssh -o StrictHostKeyChecking=no ${TEST_SERVER_IP} 'bash ~/server-script.sh'"
-                  
+                }  
               }  
             }
-            }
+            
             post {
                 always {
                     junit 'target/surefire-reports/*.xml'
