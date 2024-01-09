@@ -48,8 +48,8 @@ pipeline {
               script {
                   sshagent(['Build_server']) {
                     echo "Building THE CODE"
-                    sh "scp -o StrictHostKeyChecking=no script.sh ${TEST_SERVER_IP}:/home/ec2-user"
-                    sh "ssh -o StrictHostKeyChecking=no ${TEST_SERVER_IP} 'bash ~/script.sh'"
+                    
+                    sh "ssh -o StrictHostKeyChecking=no ${TEST_SERVER_IP}:/home/ec2-user/addressbook 'mvn package'"
                 
                     }
                   
