@@ -5,7 +5,7 @@ pipeline {
         maven 'mymaven'
     }
     environment {
-        Build_SERVER_IP = 'ec2-user@172.168.1.107'
+        Build_SERVER_IP = 'ec2-user@172.168.1.77'
         IMAGE_NAME = 'sandeep888/repo2:$BUILD_NUMBER'
     }
     
