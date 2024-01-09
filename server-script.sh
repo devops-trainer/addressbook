@@ -5,10 +5,12 @@ if [ -d "addressbook" ]
 then
   echo "repo is cloned and exists"
   cd /home/ec2-user/addressbook
-  git pull origin b1
+  git pull origin master
 else
   echo "repo is not there"
   git clone https://github.com/sandeep-kandukuri/addressbook.git
   cd /home/ec2-user/addressbook
 fi
-mvn test
+mvn package
+sudo yum install docker -y
+sudo systemctl start docker
