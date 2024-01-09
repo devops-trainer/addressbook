@@ -47,7 +47,7 @@ pipeline {
                 sshagent(['Build_server']) {
                     withCredentials([usernamePassword(credentialsId: 'docker-login', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
 
-                  echo "packing the application"
+                  echo "packing the applications"
                   sh "scp -o StrictHostKeyChecking=no server-script.sh ${Build_SERVER_IP}:/home/ec2-user"
                   sh "ssh -o StrictHostKeyChecking=no ${Build_SERVER_IP} 'bash ~/server-script.sh'"
                   sh "ssh ${Build_SERVER_IP} sudo docker build -t ${IMAGE_NAME} /home/ec2-user/addressbook"
