@@ -241,7 +241,7 @@
                         <artifactId>maven-pmd-plugin</artifactId>
                         <version>3.2</version>
                         <configuration>
-                            <targetJdk>11</targetJdk>
+                            <targetJdk>17</targetJdk>
                             <aggregate>true</aggregate>
                             <format>xml</format>
                             <!-- CPD options -->
@@ -319,7 +319,7 @@
                                     <artifactId>maven-pmd-plugin</artifactId>
                                     <version>3.2</version>
                                     <configuration>
-                                        <targetJdk>11</targetJdk>
+                                        <targetJdk>17</targetJdk>
                                         <aggregate>true</aggregate>
                                         <format>xml</format>
                                         <rulesets>
@@ -433,7 +433,7 @@
                         <artifactId>maven-pmd-plugin</artifactId>
                         <version>2.5</version>
                         <configuration>
-                            <targetJdk>11</targetJdk>
+                            <targetJdk>17</targetJdk>
                             <aggregate>true</aggregate>
                             <format>xml</format>
                             <rulesets>
