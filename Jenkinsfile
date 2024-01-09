@@ -46,8 +46,12 @@ pipeline {
             agent any
             steps {
               script {
-                 echo "Building the code"
-                  sh 'mvn package'
+                  sshagent(['Build_server']) {
+                    echo "Building THE CODE"
+                    sh "scp -o StrictHostKeyChecking=no server-script.sh ${TEST_SERVER_IP}:/home/ec2-user"
+                    sh "ssh -o StrictHostKeyChecking=no ${TEST_SERVER_IP} 'mvn package'"
+                
+                    }
                   
                 }
                 }
@@ -55,7 +59,7 @@ pipeline {
                   
                   
               }  
-            
+    } 
             
         
     }
