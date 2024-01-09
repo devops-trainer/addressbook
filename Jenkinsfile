@@ -4,40 +4,42 @@ pipeline {
         jdk 'Myjava'
         maven 'mymaven'
     }
-    environment {
-        Build_SERVER_IP = 'ec2-user@172.168.1.149'
-        IMAGE_NAME = 'sandeep888/repo2:$BUILD_NUMBER'
+    environment{
+        TEST_SERVER_IP='ec2-user@172.168.1.149'
     }
-    
+   
+
     stages {
         stage('Compile') {
             agent any
             steps {
-              script {
-                  echo "Building the code"
-                  sh 'mvn compile'
-                  
-              }  
+                script {
+                    sh 'mvn compile'
+                    echo "executed build command"
+                }
             }
+
+           
         }
         stage('UnitTest') {
             agent any
-            
+           
             steps {
-              script {
-                
-                 echo "Testing the code"
-                 sh "mvn test"
-                  
-                
-              }  
+                script {
+                    sshagent(['Build_server']) {
+                    echo "TESTING THE CODE"
+                    sh "scp -o StrictHostKeyChecking=no server-script.sh ${TEST_SERVER_IP}:/home/ec2-user"
+                    sh "ssh -o StrictHostKeyChecking=no ${TEST_SERVER_IP} 'bash ~/server-script.sh'"
+                    }
+                }
+           
             }
-            
             post {
                 always {
-                    junit 'target/surefire-reports/*.xml'
+                     junit 'target/surefire-reports/*.xml'
                 }
             }
+           
         }
         
         stage('package+building docker image') {
