@@ -5,7 +5,7 @@ pipeline {
         maven 'mymaven'
     }
     environment{
-        TEST_SERVER_IP='ec2-user@172.168.1.34'
+        TEST_SERVER_IP='ec2-user@172.168.1.107'
     }
    
 
