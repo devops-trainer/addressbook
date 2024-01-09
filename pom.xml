@@ -433,7 +433,7 @@
                         <artifactId>maven-pmd-plugin</artifactId>
                         <version>2.5</version>
                         <configuration>
-                            <targetJdk>1.8</targetJdk>
+                            <targetJdk>11</targetJdk>
                             <aggregate>true</aggregate>
                             <format>xml</format>
                             <rulesets>
